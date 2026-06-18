@@ -1,61 +1,84 @@
-# Exercício 28 – Troubleshooting na Pipeline de Integração Contínua
+# Estudo de Casos DevOps – Integração Contínua, Observabilidade e DevSecOps
 
-## Estudo de Caso: O "Build Vermelho" na Sexta-Feira
+## Sobre o Projeto
 
-### 1. A Falha no Processo Disciplinado
+Este repositório apresenta a resolução de três estudos de caso voltados para práticas modernas de DevOps. Os exercícios abordam situações reais encontradas em ambientes corporativos, exigindo análise crítica dos processos de desenvolvimento, operações, segurança e infraestrutura.
 
-O principal erro cometido por Carlos foi confiar apenas na execução dos testes unitários em seu ambiente local antes de realizar o envio do código para a branch principal do repositório.
-
-Embora os testes unitários tenham sido executados com sucesso, eles validam apenas partes isoladas da aplicação. Em um processo maduro de Integração Contínua (Continuous Integration – CI), é fundamental garantir que a alteração também seja compatível com os demais componentes do sistema, por meio da execução de testes de integração, testes funcionais e validações automatizadas completas.
-
-Antes de realizar o comando `git push`, Carlos deveria:
-
-* Atualizar sua branch local com as alterações mais recentes do repositório;
-* Executar toda a suíte de testes disponível;
-* Validar o comportamento da aplicação em um ambiente semelhante ao de integração;
-* Corrigir possíveis falhas encontradas;
-* Somente então realizar o envio do código para integração.
-
-Esse processo reduz significativamente o risco de introduzir erros na branch principal e mantém a estabilidade do projeto para toda a equipe.
+O objetivo principal foi aplicar conceitos estudados em sala de aula para diagnosticar problemas, identificar causas raízes e propor soluções alinhadas às boas práticas de engenharia de software, automação e cultura DevOps.
 
 ---
 
-### 2. A Reação da Equipe
+## Atividades Desenvolvidas
 
-Quando uma pipeline de Integração Contínua falha, a prioridade máxima da equipe deve ser restaurar o estado saudável da aplicação.
+### Exercício 28 – Troubleshooting na Pipeline de Integração Contínua
 
-O dashboard vermelho do Jenkins indica que a versão atual do código não é considerada confiável. Portanto, nenhuma nova funcionalidade ou correção deve ser integrada até que o problema seja resolvido.
+Neste estudo de caso foi analisada uma falha em uma pipeline de Integração Contínua (CI) após o envio de uma alteração para a branch principal do projeto.
 
-Nesse cenário:
+A atividade teve como foco:
 
-* Carlos deve assumir a investigação inicial da falha, pois sua alteração foi a última integrada;
-* Ana deve interromper temporariamente sua correção urgente;
-* Toda a equipe deve colaborar para identificar a causa do erro;
-* O objetivo principal passa a ser restaurar rapidamente o estado "verde" da pipeline.
+* Compreender a importância da validação completa antes da integração de código;
+* Entender o papel das ferramentas de automação de build e testes;
+* Analisar a responsabilidade da equipe quando uma pipeline falha;
+* Aplicar os princípios de Integração Contínua para garantir estabilidade e qualidade do software.
 
-Essa prática garante que a branch principal permaneça sempre estável e pronta para novas integrações.
+A resolução demonstrou como um erro aparentemente simples pode comprometer todo o fluxo de desenvolvimento quando os processos de validação não são seguidos adequadamente.
 
 ---
 
-### 3. O Papel das Ferramentas
+### Exercício 29 – O Abismo entre o Deploy e o Valor
 
-#### Maven
+O segundo estudo de caso apresentou um incidente ocorrido após um deploy realizado com sucesso do ponto de vista técnico, mas que gerou impactos negativos para o negócio.
 
-O Maven atuou como ferramenta de automação do processo de build, sendo responsável por:
+Os principais temas analisados foram:
 
-* Gerenciamento de dependências;
-* Compilação do código-fonte;
-* Execução de testes automatizados;
-* Empacotamento da aplicação;
-* Padronização do ciclo de desenvolvimento.
+* Cultura DevOps e eliminação de silos organizacionais;
+* Diferença entre monitoramento e observabilidade;
+* Métricas técnicas versus métricas de negócio;
+* Importância do Post-Mortem Blameless para a melhoria contínua.
 
-Sua função é garantir que o projeto possa ser construído corretamente de forma reproduzível.
+Durante a análise foi possível compreender que sistemas podem apresentar excelente desempenho técnico e, ainda assim, falhar na entrega de valor ao cliente final. Por esse motivo, a observabilidade moderna deve ir além da infraestrutura e considerar indicadores relacionados à experiência do usuário e aos resultados do negócio.
 
-#### Selenium
+---
 
-O Selenium foi responsável pela execução dos testes funcionais automatizados.
+### Exercício 30 – O Patch de Sexta-Feira e o Fantasma do Drift
 
-Diferentemente dos testes unitários, ele simula a interação de um usuário real com a interface da aplicação. Dessa forma, conseguiu detectar que o botão "Finalizar Compra" havia desaparecido da tela.
+O terceiro estudo de caso abordou um cenário avançado envolvendo Infraestrutura como Código (IaC), DevSecOps e Configuration Drift.
 
-Graças ao Selenium, o defeito foi identificado antes que a aplicação fosse empacotada e disponibilizada para produção, evitando impactos aos clientes.
+Foram estudados conceitos como:
 
+* Terraform e Infraestrutura como Código;
+* GitOps;
+* Segurança integrada ao pipeline;
+* Imutabilidade da infraestrutura;
+* Detecção de Configuration Drift;
+* Governança e automação em ambientes produtivos.
+
+A atividade demonstrou os riscos de alterações manuais em ambientes de produção e como a quebra dos princípios de automação pode gerar inconsistências capazes de comprometer serviços críticos da organização.
+
+---
+
+## Metodologia Utilizada para Elaboração das Respostas
+
+As respostas foram elaboradas a partir da análise detalhada de cada cenário proposto, considerando não apenas os sintomas apresentados, mas principalmente suas causas raízes.
+
+A construção das soluções seguiu os princípios fundamentais do DevOps:
+
+* Automação de processos;
+* Integração e Entrega Contínua (CI/CD);
+* Observabilidade;
+* Infraestrutura como Código (IaC);
+* DevSecOps;
+* Cultura colaborativa;
+* Melhoria contínua.
+
+Para cada questão foi realizada uma análise técnica baseada em práticas adotadas por organizações modernas que utilizam pipelines automatizadas, microsserviços, monitoramento avançado e infraestrutura em nuvem.
+
+Além disso, as respostas foram estruturadas de forma descritiva e profissional, buscando demonstrar não apenas o conhecimento das ferramentas envolvidas, mas também a compreensão dos princípios arquiteturais e culturais que sustentam o movimento DevOps.
+
+---
+
+## Conclusão
+
+Os três estudos de caso evidenciam que a adoção de DevOps vai muito além da utilização de ferramentas. O sucesso depende da integração entre pessoas, processos e tecnologia, permitindo que equipes entreguem software de forma rápida, segura e confiável.
+
+Através da análise dos cenários apresentados foi possível compreender a importância da colaboração entre equipes, da automação de processos, da observabilidade dos sistemas e da gestão adequada da infraestrutura, elementos essenciais para a construção de ambientes modernos e resilientes.
